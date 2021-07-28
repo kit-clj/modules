@@ -1,0 +1,20 @@
+{:require-restart? true
+ :assets           [["assets/home.html"    "resources/public/home.html"]
+                    ["assets/home.html"    "resources/public/error.html"]
+                    ["assets/img/wake.png" "resources/public/img/wake.png"]
+                    ["assets/pages.clj"    "src/clj/<<ns-name>>/web/routes/pages.clj"]
+                    ["assets/layout.clj"   "src/clj/<<ns-name>>/web/pages/layout.clj"]]
+ :injections       [{:type   :edn
+                     :path   "resources/system.edn"
+                     :target []
+                     :action :merge
+                     :value  {:reitit.routes/pages
+                              {:base-path "/"
+                               :env       #ig/ref :system/env}
+                              :templating/selmer
+                              {}}}
+                    {:type   :edn
+                       :path   "deps.edn"
+                       :target [:deps]
+                       :action :conj
+                       :value  ['wake.html {:mvn/version "1.0.0"}]}]}

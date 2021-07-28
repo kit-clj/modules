@@ -1,0 +1,23 @@
+{:require-restart? true
+ :injections       [{:type   :edn
+                     :path   "resources/system.edn"
+                     :target []
+                     :action :merge
+                     :value  {:db.sql/connection
+                              #profile
+                               {:dev  {:jdbc-url "jdbc:sqlite:<<sanitized>>_dev.db"}
+                                :test {:jdbc-url "jdbc:sqlite:<<sanitized>>_test.db"}
+                                :prod {:jdbc-url   #env 'JDBC_URL}}
+                              :db.sql/query-fn
+                              {:conn     #ig/ref :db.sql/connection
+                               :options  {}
+                               :filename "queries.sql"}                              
+                              :db.sql/migrations
+                              {:store            :database
+                               :db               {:datasource #ig/ref :db/connection}
+                               :migrate-on-init? true}}}
+                    {:type   :edn
+                       :path   "deps.edn"
+                       :target [:deps]
+                       :action :conj
+                       :value  ['wake.sqlite "1.0.0"]}]}
