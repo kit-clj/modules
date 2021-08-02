@@ -10,10 +10,13 @@
                       :target []
                       :action :merge
                       :value  {:reitit.routes/pages {:base-path "/"
-                                                     :env       #ig/ref :system/env}
-                               :templating/selmer   {}}}
+                                                     :env       #ig/ref :system/env
+                                                     :selmer    #ig/ref :templating/selmer}
+                               :templating/selmer   {:resource-path "html"
+                                                     :cache? #profile {:prod    true
+                                                                       :default false}}}}
                      {:type   :edn
                       :path   "deps.edn"
                       :target [:deps]
                       :action :conj
-                      :value  ['wake.html {:mvn/version "1.0.0"}]}]}}
+                      :value  ['wake-clj/wake-selmer {:mvn/version "0.1.0"}]}]}}
