@@ -13,10 +13,9 @@
 
 (defn render
  [request template & [params]]
- ((get-in request [:reitit.core/match :data :selmer :render-file]) template
-   (assoc params
-     :page template
-     :csrf-token *anti-forgery-token*)))
+ (-> (parser/render-file template (assoc params :page template :csrf-token *anti-forgery-token*))
+     (ok)
+     (content-type "text/html; charset=utf-8")))
 
 (defn error-page
   "error-details should be a map containing the following keys:
@@ -25,7 +24,7 @@
    :message - detailed error message (optional)
    returns a response map with the error page as the body
    and the status specified by the status key"
-  [{:keys [render-file]} error-details]
+  [error-details]
   {:status  (:status error-details)
    :headers {"Content-Type" "text/html; charset=utf-8"}
-   :body    (render-file "error.html" error-details)})
+   :body    (parser/render-file "error.html" error-details)})
