@@ -1,6 +1,8 @@
-{:html
- {:path "html"
-  :doc "adds support for HTML templating using Selmer"}
- :sqlite
- {:path "sqlite"
-  :doc "adds support for SQLite embedded database"}}
+{:name "wake-modules"
+ :modules
+ {:html
+  {:path "html"
+   :doc "adds support for HTML templating using Selmer"}
+  :sqlite
+  {:path "sqlite"
+   :doc "adds support for SQLite embedded database"}}}

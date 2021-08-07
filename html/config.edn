@@ -10,11 +10,11 @@
                       :target []
                       :action :merge
                       :value  {:reitit.routes/pages {:base-path "/"
-                                                     :env           #ig/ref :system/env}}
+                                                     :env           #ig/ref :system/env}}}
                       {:type   :edn
                        :path   "deps.edn"
                        :target [:deps]
                        :action :into
                        :value  {'selmer/selmer {:mvn/version "1.12.44"}
                                 'ring/ring-defaults {:mvn/version "0.3.3"}
-                                'luminus/ring-ttl-session {:mvn/version "0.3.3"}}}}]}}
+                                'luminus/ring-ttl-session {:mvn/version "0.3.3"}}}]}}
