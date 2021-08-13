@@ -6,18 +6,19 @@
     [reitit.ring.middleware.muuntaja :as muuntaja]
     [reitit.ring.middleware.parameters :as parameters]
     [ring.middleware.defaults :as defaults]
-    [ring-ttl-session.core :refer [ttl-memory-store]]))
+    [ring.middleware.session.cookie :refer [cookie-store]]))
 
 (defn wrap-site-defaults []
-  (let [page (layout/error-page
-                {:status 403
-                  :title "Invalid anti-forgery token"})]
+  (let [error-page (layout/error-page
+                     {:status 403
+                      :title "Invalid anti-forgery token"})]
     (fn [handler]
       (defaults/wrap-defaults
         handler
         (-> defaults/site-defaults
-            (assoc-in [:security :anti-forgery] {:error-response page})
-            (assoc-in [:session :store] (ttl-memory-store (* 60 30))))))))
+            (assoc-in [:security :anti-forgery] {:error-response error-page})
+            (assoc-in [:session :store] (cookie-store))
+            (assoc-in [:session :cookie-attrs] {:max-age 10}))))))
 
 (defn home [request]
   (layout/render request "home.html"))
