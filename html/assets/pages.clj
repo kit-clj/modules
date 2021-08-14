@@ -5,20 +5,13 @@
     [integrant.core :as ig]
     [reitit.ring.middleware.muuntaja :as muuntaja]
     [reitit.ring.middleware.parameters :as parameters]
-    [ring.middleware.defaults :as defaults]
-    [ring.middleware.session.cookie :refer [cookie-store]]))
+    [ring.middleware.anti-forgery :refer [wrap-anti-forgery]]))
 
 (defn wrap-site-defaults []
   (let [error-page (layout/error-page
                      {:status 403
                       :title "Invalid anti-forgery token"})]
-    (fn [handler]
-      (defaults/wrap-defaults
-        handler
-        (-> defaults/site-defaults
-            (assoc-in [:security :anti-forgery] {:error-response error-page})
-            (assoc-in [:session :store] (cookie-store))
-            (assoc-in [:session :cookie-attrs] {:max-age 10}))))))
+    #(wrap-anti-forgery % {:error-response error-page}))))
 
 (defn home [request]
   (layout/render request "home.html"))
