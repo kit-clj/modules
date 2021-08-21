@@ -1,4 +1,4 @@
-(ns <<ns-name>>web.routes.pages
+(ns <<ns-name>>.web.routes.pages
   (:require
     [<<ns-name>>.web.middleware.exception :as exception]
     [<<ns-name>>.web.pages.layout :as layout]
