@@ -3,7 +3,7 @@
   :actions
   {:assets           [["assets/home.html"    "resources/public/home.html"]
                      ["assets/home.html"    "resources/public/error.html"]
-                     ["assets/img/wake.png" "resources/public/img/wake.png"]
+                     ["assets/img/kit.png" "resources/public/img/kit.png"]
                      ["assets/pages.clj"    "src/clj/<<sanitized>>/web/routes/pages.clj"]
                      ["assets/layout.clj"   "src/clj/<<sanitized>>/web/pages/layout.clj"]]
    :injections       [{:type   :edn

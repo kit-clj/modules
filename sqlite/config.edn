@@ -19,4 +19,4 @@
                  :path   "deps.edn"
                  :target [:deps]
                  :action :merge
-                 :value  {'wake.sqlite {:mvn/version "1.0.0"}}}]}}}
+                 :value  {'kit.sqlite {:mvn/version "1.0.0"}}}]}}}

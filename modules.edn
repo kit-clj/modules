@@ -1,4 +1,4 @@
-{:name "wake-modules"
+{:name "kit-modules"
  :modules
  {:html
   {:path "html"
