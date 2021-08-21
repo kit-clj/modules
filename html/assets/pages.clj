@@ -39,6 +39,6 @@
   [_ {:keys [base-path]
       :or   {base-path ""}
       :as   opts}]
-  (layout/init-custom-tags!)
+  (layout/init-selmer!)
   ["" (route-data opts) (page-routes base-path)])
 
