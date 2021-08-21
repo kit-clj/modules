@@ -10,7 +10,7 @@
                        :path   "resources/system.edn"
                        :target []
                        :action :merge
-                       :value  {:reitit.routes/pages {:base-path "/"
+                       :value  {:reitit.routes/pages {:base-path ""
                                                       :env       #ig/ref :system/env}}}
                       {:type   :edn
                        :path   "deps.edn"
