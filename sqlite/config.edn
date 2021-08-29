@@ -19,4 +19,8 @@
                  :path   "deps.edn"
                  :target [:deps]
                  :action :merge
-                 :value  {'kit.sqlite {:mvn/version "1.0.0"}}}]}}}
+                 :value  {'kit.sqlite {:mvn/version "1.0.0"}}}
+                {:type   :clj
+                 :path   "src/<<sanitized>>/core.clj"
+                 :action :append-requires
+                 :value  ["[kit.edge.db.sql]"]}]}}}
