@@ -1,7 +1,8 @@
 {:default
  {:require-restart? true
   :actions
-  {:injections [{:type   :edn
+  {:assets     [["assets/queries.sql" "resources/sql/queries.sql"]]
+   :injections [{:type   :edn
                  :path   "resources/system.edn"
                  :target []
                  :action :merge
@@ -13,14 +14,15 @@
                                               :options  {}
                                               :filename "queries.sql"}
                           :db.sql/migrations {:store            :database
-                                              :db               {:datasource #ig/ref :db/connection}
+                                              :db               {:datasource #ig/ref :db.sql/connection}
                                               :migrate-on-init? true}}}
                 {:type   :edn
                  :path   "deps.edn"
                  :target [:deps]
                  :action :merge
-                 :value  {'kit.sqlite {:mvn/version "1.0.0"}}}
+                 :value  {kit-clj/kit-sql        {:mvn/version "0.1.0"}
+                          org.xerial/sqlite-jdbc {:mvn/version "3.34.0"}}}
                 {:type   :clj
-                 :path   "src/<<sanitized>>/core.clj"
+                 :path   "src/clj/<<sanitized>>/core.clj"
                  :action :append-requires
                  :value  ["[kit.edge.db.sql]"]}]}}}
