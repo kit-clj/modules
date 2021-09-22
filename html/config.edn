@@ -16,9 +16,9 @@
                        :path   "deps.edn"
                        :target [:deps]
                        :action :merge
-                       :value  {'selmer/selmer {:mvn/version "1.12.44"}
-                                'ring/ring-defaults {:mvn/version "0.3.3"}
-                                'luminus/ring-ttl-session {:mvn/version "0.3.3"}}}
+                       :value  {selmer/selmer {:mvn/version "1.12.44"}
+                                ring/ring-defaults {:mvn/version "0.3.3"}
+                                luminus/ring-ttl-session {:mvn/version "0.3.3"}}}
                       {:type   :clj
                        :path   "src/clj/<<sanitized>>/core.clj"
                        :action :append-requires
