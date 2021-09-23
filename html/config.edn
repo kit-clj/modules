@@ -8,10 +8,11 @@
                      ["assets/layout.clj"   "src/clj/<<sanitized>>/web/pages/layout.clj"]]
    :injections       [{:type   :edn
                        :path   "resources/system.edn"
-                       :target [:reitit.routes/pages]
+                       :target []
                        :action :merge
-                       :value  {:base-path ""
-                                :env       #ig/ref :system/env}}
+                       :value  {:reitit.routes/pages
+                                {:base-path ""
+                                 :env       #ig/ref :system/env}}}
                       {:type   :edn
                        :path   "deps.edn"
                        :target [:deps]
