@@ -1,7 +1,8 @@
 {:default
  {:require-restart? true
   :actions
-  {:assets     [["assets/queries.sql" "resources/sql/queries.sql"]]
+  {:assets     [["assets/queries.sql" "resources/sql/queries.sql"]
+                "resources/migrations"]
    :injections [{:type   :edn
                  :path   "resources/system.edn"
                  :target []
