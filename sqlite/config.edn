@@ -12,7 +12,7 @@
                                                :prod {:jdbc-url #env JDBC_URL}}
                           :db.sql/query-fn   {:conn     #ig/ref :db.sql/connection
                                               :options  {}
-                                              :filename "queries.sql"}
+                                              :filename "sql/queries.sql"}
                           :db.sql/migrations {:store            :database
                                               :db               {:datasource #ig/ref :db.sql/connection}
                                               :migrate-on-init? true}}}
