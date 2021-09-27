@@ -1,0 +1,10 @@
+{:default
+ {:require-restart? true
+  :actions
+  {:assets           [["assets/shadow-cljs.edn"    "shadow-cljs.edn"]
+                     ["assets/package.json"    "package.json"]
+                     ["assets/src/core.cljs"   "src/cljs/<<sanitized>>/core.cljs"]]
+   :injections       [{:type   :cljs
+                       :path   "build.clj"
+                       :action :append-task
+                       :value  ["[<<ns-name>>.web.routes.pages]"]}]}}}

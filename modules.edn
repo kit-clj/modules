@@ -5,4 +5,7 @@
    :doc "adds support for HTML templating using Selmer"}
   :sqlite
   {:path "sqlite"
-   :doc "adds support for SQLite embedded database"}}}
+   :doc "adds support for SQLite embedded database"}
+  :cljs
+  {:path "cljs"
+   :doc "adds support for cljs using shadow-cljs"}}}
