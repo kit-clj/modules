@@ -4,8 +4,8 @@
   {:assets           [["assets/home.html"    "resources/html/home.html"]
                      ["assets/error.html"    "resources/html/error.html"]
                      ["assets/img/kit.png" "resources/public/img/kit.png"]
-                     ["assets/pages.clj"    "src/clj/<<sanitized>>/web/routes/pages.clj"]
-                     ["assets/layout.clj"   "src/clj/<<sanitized>>/web/pages/layout.clj"]]
+                     ["assets/src/pages.clj"    "src/clj/<<sanitized>>/web/routes/pages.clj"]
+                     ["assets/src/layout.clj"   "src/clj/<<sanitized>>/web/pages/layout.clj"]]
    :injections       [{:type   :edn
                        :path   "resources/system.edn"
                        :target []

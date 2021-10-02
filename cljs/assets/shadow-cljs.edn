@@ -6,7 +6,5 @@
  :builds       {:app {:target     :browser
                       :output-dir "target/classes/cljsbuild/public/js"
                       :asset-path "/js"
-                      :modules    {:app {:entries [com.danboykis.test.core]}}
-                      :devtools   {:after-load com.danboykis.test.core/mount-root}}}
-; :lein  {:profile "+dev"}
-}
+                      :modules    {:app {:entries [<<ns-name>>.core]}}
+                      :devtools   {:after-load <<ns-name>>.core/mount-root}}}}
