@@ -21,8 +21,8 @@
                  :path   "deps.edn"
                  :target [:deps]
                  :action :merge
-                 :value  "{kit-clj/kit-sql        {:mvn/version "0.1.0"}
-                  org.xerial/sqlite-jdbc {:mvn/version "3.34.0"}}"}
+                 :value  "{kit-clj/kit-sql        {:mvn/version \"0.1.0\"}
+                  org.xerial/sqlite-jdbc {:mvn/version \"3.34.0\"}}"}
                 {:type   :clj
                  :path   "src/clj/<<sanitized>>/core.clj"
                  :action :append-requires
