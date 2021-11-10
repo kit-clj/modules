@@ -1,11 +1,11 @@
 {:name "kit-modules"
  :modules
- {:html
+ {:kit/html
   {:path "html"
    :doc "adds support for HTML templating using Selmer"}
-  :sqlite
+  :kit/sqlite
   {:path "sqlite"
    :doc "adds support for SQLite embedded database"}
-  :cljs
+  :kit/cljs
   {:path "cljs"
    :doc "adds support for cljs using shadow-cljs"}}}

@@ -9,6 +9,20 @@
                  :action :append
                  :target [:body]
                  :value  [:div {:id "app"}]}
+                {:type   :html
+                 :path   "resources/html/home.html"
+                 :action :append
+                 :target [:body]
+                 :value  [:script {:src "/js/app.js"}]}
+                 {:type :edn
+                  :path "deps.edn"
+                  :target [:paths]
+                  :action :append
+                  :value "target/classes/cljsbuild"}
+                {:type   :clj
+                 :path   "build.clj"
+                 :action :append-requires
+                 :value  ["[clojure.java.shell :refer [sh]]"]}
                 {:type   :clj
                  :path   "build.clj"
                  :action :append-build-task

@@ -12,8 +12,8 @@
 ;; -------------------------
 ;; Initialize app
 
-(defn mount-root []
+(defn ^:dev/after-load mount-root []
   (d/render [home-page] (.getElementById js/document "app")))
 
-(defn ^:export init! []
+(defn ^:export ^:dev/once init! []
   (mount-root))
