@@ -7,8 +7,7 @@
                  :path   "resources/system.edn"
                  :target []
                  :action :merge
-                 :value  "
-                 {:db.sql/connection #profile
+                 :value  "{:db.sql/connection #profile
                                               {:dev  {:jdbc-url \"jdbc:sqlite:<<sanitized>>_dev.db\"}
                                                :test {:jdbc-url \"jdbc:sqlite:<<sanitized>>_test.db\"}
                                                :prod {:jdbc-url #env JDBC_URL}}
@@ -22,8 +21,7 @@
                  :path   "deps.edn"
                  :target [:deps]
                  :action :merge
-                 :value  "
-                 {kit-clj/kit-sql        {:mvn/version "0.1.0"}
+                 :value  "{kit-clj/kit-sql        {:mvn/version "0.1.0"}
                   org.xerial/sqlite-jdbc {:mvn/version "3.34.0"}}"}
                 {:type   :clj
                  :path   "src/clj/<<sanitized>>/core.clj"
