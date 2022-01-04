@@ -8,8 +8,8 @@
                  :target []
                  :action :merge
                  :value  {:db.sql/connection #profile
-                                              {:dev  {:jdbc-url "jdbc:sqlite:<<sanitized>>_dev.db"}
-                                               :test {:jdbc-url "jdbc:sqlite:<<sanitized>>_test.db"}
+                                              {:dev  {:jdbc-url "jdbc:sqlite:<<name>>_dev.db"}
+                                               :test {:jdbc-url "jdbc:sqlite:<<name>>_test.db"}
                                                :prod {:jdbc-url #env JDBC_URL}}
                           :db.sql/query-fn   {:conn     #ig/ref :db.sql/connection
                                               :options  {}
