@@ -17,21 +17,21 @@
   (layout/render request "home.html"))
 
 ;; Routes
-(defn page-routes [base-path]
-  [base-path
-   ["/" {:get home}]])
+(defn page-routes [_opts]
+  [["/" {:get home}]])
 
-(defn route-data
-  [{:keys [template-opts]}]
-  {:swagger    {:id ::api}
-   :middleware [;; Default middleware for pages
-                (wrap-page-defaults)
-                ;; query-params & form-params
-                parameters/parameters-middleware
-                ;; encoding response body
-                muuntaja/format-response-middleware                
-                ;; exception handling
-                exception/wrap-exception]})
+(defn route-data [opts]
+  (merge
+   opts
+   {:middleware 
+    [;; Default middleware for pages
+     (wrap-page-defaults)
+     ;; query-params & form-params
+     parameters/parameters-middleware
+     ;; encoding response body
+     muuntaja/format-response-middleware
+     ;; exception handling
+     exception/wrap-exception]}))
 
 (derive :reitit.routes/pages :reitit/routes)
 
@@ -40,5 +40,5 @@
       :or   {base-path ""}
       :as   opts}]
   (layout/init-selmer!)
-  ["" (route-data opts) (page-routes base-path)])
+  [base-path (route-data opts) (page-routes opts)])
 
