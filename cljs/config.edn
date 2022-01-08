@@ -1,5 +1,6 @@
 {:default
  {:require-restart? true
+  :requires [:kit/html]
   :actions
   {:assets     [["assets/shadow-cljs.edn" "shadow-cljs.edn"]
                 ["assets/package.json"    "package.json"]
