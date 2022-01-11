@@ -8,4 +8,7 @@
    :doc "adds support for SQLite embedded database"}
   :kit/cljs
   {:path "cljs"
-   :doc "adds support for cljs using shadow-cljs"}}}
+   :doc "adds support for cljs using shadow-cljs"}
+  :kit/nrepl
+  {:path "nrepl"
+   :doc "adds support for nREPL"}}}

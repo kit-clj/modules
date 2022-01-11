@@ -1,0 +1,20 @@
+{:default
+ {:require-restart? true
+  :actions
+  {:assets     []
+   :injections [{:type   :edn
+                 :path   "deps.edn"
+                 :target [:deps]
+                 :action :merge
+                 :value  {io.github.kit-clj/kit-nrepl {:mvn/version "1.0.0"}}}
+                {:type   :edn
+                 :path   "resources/system.edn"
+                 :target []
+                 :action :merge
+                 :value  {:nrepl/server {:port #long #or [#env NREPL_PORT 7001]
+                                         :bind #or [#env NREPL_HOST "127.0.01"]}}}
+                {:type   :clj
+                 :path   "src/clj/<<sanitized>>/core.clj"
+                 :action :append-requires
+                 :value  ["[kit.edge.utils.nrepl]"]}]}}}
+
