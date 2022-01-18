@@ -3,6 +3,9 @@
  {:kit/html
   {:path "html"
    :doc "adds support for HTML templating using Selmer"}
+  :kit/metrics
+  {:path "metrics"
+   :doc "adds support for metrics using prometheus through iapetos"}
   :kit/sqlite
   {:path "sqlite"
    :doc "adds support for SQLite embedded database"}

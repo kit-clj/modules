@@ -1,0 +1,33 @@
+{:default
+ {:require-restart? true
+  :actions
+  {:assets     []
+   :injections [{:type   :edn
+                 :path   "deps.edn"
+                 :target [:deps]
+                 :action :merge
+                 :value  {io.github.kit-clj/kit-metrics {:mvn/version "1.0.1"}}}
+                {:type   :edn
+                 :path   "resources/system.edn"
+                 :target []
+                 :action :merge
+                 :value  {:metrics/prometheus {}}}
+                {:type   :edn
+                 :path   "resources/system.edn"
+                 :target [:handler/ring]
+                 :action :merge
+                 :value  {:metrics #ig/ref :metrics/prometheus}}
+                {:type   :edn
+                 :path   "resources/system.edn"
+                 :target [:reitit.routes/api]
+                 :action :merge
+                 :value  {:metrics #ig/ref :metrics/prometheus}}
+                {:type   :clj
+                 :path   "src/clj/<<sanitized>>/core.clj"
+                 :action :append-requires
+                 :value  ["[kit.edge.utils.metrics]"]}
+                {:type   :clj
+                 :path   "src/clj/<<sanitized>>/web/middleware/core.clj"
+                 :action :append-requires
+                 :value  ["[iapetos.collector.ring :as prometheus-ring]"]}
+                ]}}}
