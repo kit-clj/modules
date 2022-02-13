@@ -5,7 +5,7 @@
                 [reagent "1.1.0"]
                 [cljs-ajax "0.8.4"]]
  :builds       {:app {:target     :browser
-                      :output-dir "target/classes/cljsbuild/public/js"
+                      :output-dir "target/classes/public/js"
                       :asset-path "/js"
                       :modules    {:app {:entries [<<ns-name>>.core]
                                          :init-fn <<ns-name>>.core/init!}}
