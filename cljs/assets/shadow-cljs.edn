@@ -8,5 +8,5 @@
                       :output-dir "target/classes/cljsbuild/public/js"
                       :asset-path "/js"
                       :modules    {:app {:entries [<<ns-name>>.core]
-                                         :init-fn <<ns-name>>.core/init!}}}
+                                         :init-fn <<ns-name>>.core/init!}}
                       :devtools   {:after-load <<ns-name>>.core/mount-root}}}}
