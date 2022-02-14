@@ -20,6 +20,11 @@
                   :target [:paths]
                   :action :append
                   :value "src/cljs"}
+                {:type :edn
+                 :path "deps.edn"
+                 :target [:aliases :dev :extra-paths]
+                 :action :append
+                 :value  "target/classes"}
                 {:type   :clj
                  :path   "build.clj"
                  :action :append-requires
