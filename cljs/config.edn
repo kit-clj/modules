@@ -24,7 +24,7 @@
                  :path "deps.edn"
                  :target [:aliases :dev :extra-paths]
                  :action :append
-                 :value  "target/classes"}
+                 :value  "target/classes/cljsbuild"}
                 {:type   :clj
                  :path   "build.clj"
                  :action :append-requires
@@ -37,7 +37,8 @@
                            (let [{:keys [exit]
                                   :as   s} (sh "npx" "shadow-cljs" "release" "app")]
                              (when-not (zero? exit)
-                               (throw (ex-info "could not compile cljs" s)))))}
+                               (throw (ex-info "could not compile cljs" s)))
+                             (sh "cp" "-r" "target/classes/cljsbuild/public" "target/classes/")))}
                 {:type   :clj
                  :path   "build.clj"
                  :action :append-build-task-call
