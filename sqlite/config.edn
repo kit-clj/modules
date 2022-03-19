@@ -22,7 +22,7 @@
                  :target [:deps]
                  :action :merge
                  :value  {io.github.kit-clj/kit-sql {:mvn/version "1.0.0"}
-                          org.xerial/sqlite-jdbc    {:mvn/version "3.34.0"}}}
+                          org.xerial/sqlite-jdbc    {:mvn/version "3.36.0.3"}}}
                 {:type   :clj
                  :path   "src/clj/<<sanitized>>/core.clj"
                  :action :append-requires
