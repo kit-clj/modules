@@ -1,0 +1,30 @@
+{:default
+ {:require-restart? true
+  :actions
+  {:assets     [["assets/queries.sql" "resources/sql/queries.sql"]
+                "resources/migrations"]
+   :injections [{:type   :edn
+                 :path   "resources/system.edn"
+                 :target []
+                 :action :merge
+                 :value  {:db.sql/connection #profile
+                                              {:dev  {:jdbc-url "jdbc:TODO"}
+                                               :test {:jdbc-url "jdbc:TODO"}
+                                               :prod {:jdbc-url #env JDBC_URL}}
+                          :db.sql/query-fn   {:conn     #ig/ref :db.sql/connection
+                                              :options  {}
+                                              :filename "sql/queries.sql"}
+                          :db.sql/migrations {:store            :database
+                                              :db               {:datasource #ig/ref :db.sql/connection}
+                                              :migrate-on-init? true}}}
+                {:type   :edn
+                 :path   "deps.edn"
+                 :target [:deps]
+                 :action :merge
+                 :value  {io.github.kit-clj/kit-sql-conman   {:mvn/version "1.0.1"}
+                          io.github.kit-clj/kit-sql-migratus {:mvn/version "1.0.0"}}}
+                {:type   :clj
+                 :path   "src/clj/<<sanitized>>/core.clj"
+                 :action :append-requires
+                 :value  ["[kit.edge.db.sql.conman]
+[kit.edge.db.sql.migratus]"]}]}}}

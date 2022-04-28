@@ -6,9 +6,15 @@
   :kit/metrics
   {:path "metrics"
    :doc "adds support for metrics using prometheus through iapetos"}
+  :kit/sql
+  {:path "sql"
+   :doc "adds generic SQL support. Requires manual database driver setup"}
   :kit/sqlite
   {:path "sqlite"
    :doc "adds support for SQLite embedded database"}
+  :kit/postgres
+  {:path "postgres"
+   :doc "adds support for PostgreSQL database"}
   :kit/cljs
   {:path "cljs"
    :doc "adds support for cljs using shadow-cljs"}
