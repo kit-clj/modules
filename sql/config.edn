@@ -1,4 +1,7 @@
 {:default
+ {:feature-requires [:sqlite]}
+    
+ :base
  {:require-restart? true
   :actions
   {:assets     [["assets/queries.sql" "resources/sql/queries.sql"]
@@ -27,7 +30,7 @@
   }
   
  :sqlite
- {:feature-requires [:default]
+ {:feature-requires [:base]
   :actions
   {:injections [{:type   :edn
                  :path   "resources/system.edn"
@@ -44,7 +47,7 @@
                  :value  {org.xerial/sqlite-jdbc {:mvn/version "3.36.0.3"}}}]}}
 
  :postgres
- {:feature-requires [:default]
+ {:feature-requires [:base]
   :actions
   {:injections [{:type   :edn
                  :path   "resources/system.edn"
