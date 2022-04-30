@@ -8,7 +8,7 @@
    :doc "adds support for metrics using prometheus through iapetos"}
   :kit/sql
   {:path "sql"
-   :doc "adds support for SQL. Available profiles [ :postgres :sql ]"}
+   :doc "adds support for SQL. Available profiles [ :postgres :sqlite ]. Default profile :sqlite"}
   :kit/cljs
   {:path "cljs"
    :doc "adds support for cljs using shadow-cljs"}
