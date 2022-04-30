@@ -1,5 +1,5 @@
 {:default
- {:feature-requires [:sqlite]}
+ {:feature-requires [:base :sqlite]}
     
  :base
  {:require-restart? true
