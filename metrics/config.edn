@@ -6,7 +6,7 @@
                  :path   "deps.edn"
                  :target [:deps]
                  :action :merge
-                 :value  {io.github.kit-clj/kit-metrics {:mvn/version "1.0.1"}}}
+                 :value  {io.github.kit-clj/kit-metrics {:mvn/version "1.0.2"}}}
                 {:type   :edn
                  :path   "resources/system.edn"
                  :target []
