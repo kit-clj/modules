@@ -20,7 +20,7 @@
                  :path   "deps.edn"
                  :target [:deps]
                  :action :merge
-                 :value  {io.github.kit-clj/kit-sql-conman   {:mvn/version "1.0.1"}
+                 :value  {io.github.kit-clj/kit-sql-conman   {:mvn/version "1.0.2"}
                           io.github.kit-clj/kit-sql-migratus {:mvn/version "1.0.0"}}}
                 {:type   :clj
                  :path   "src/clj/<<sanitized>>/core.clj"
