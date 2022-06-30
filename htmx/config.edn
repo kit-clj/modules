@@ -1,21 +1,23 @@
 {:default
  {:require-restart? true
   :actions
-  {:assets           [["assets/src/ui.clj"    "src/clj/<<sanitized>>/web/routes/ui.clj"]
-                      ["assets/src/htmx.clj"  "src/clj/<<sanitized>>/web/htmx.clj"]]
-   :injections       [{:type   :edn
-                       :path   "resources/system.edn"
-                       :target []
-                       :action :merge
-                       :value  {:reitit.routes/ui
-                          {:base-path ""
-                             :env       #ig/ref :system/env}}}
-                      {:type   :edn
-                       :path   "deps.edn"
-                       :target [:deps]
-                       :action :merge
-                       :value  {hiccup/hiccup {:mvn/version "1.0.5"}}}
-                      {:type   :clj
-                       :path   "src/clj/<<sanitized>>/core.clj"
-                       :action :append-requires
-                       :value  ["[<<ns-name>>.web.routes.ui]"]}]}}}
+  {:assets
+   [["assets/src/ui.clj"   "src/clj/<<sanitized>>/web/routes/ui.clj"]
+    ["assets/src/htmx.clj" "src/clj/<<sanitized>>/web/htmx.clj"]]
+   :injections
+   [{:type   :edn
+     :path   "resources/system.edn"
+     :target []
+     :action :merge
+     :value  {:reitit.routes/ui
+              {:base-path ""
+               :env       #ig/ref :system/env}}}
+    {:type   :edn
+     :path   "deps.edn"
+     :target [:deps]
+     :action :merge
+     :value  {hiccup/hiccup {:mvn/version "1.0.5"}}}
+    {:type   :clj
+     :path   "src/clj/<<sanitized>>/core.clj"
+     :action :append-requires
+     :value  ["[<<ns-name>>.web.routes.ui]"]}]}}}
