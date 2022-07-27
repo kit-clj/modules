@@ -9,6 +9,9 @@
   :kit/metrics
   {:path "metrics"
    :doc "adds support for metrics using prometheus through iapetos"}
+  :kit/sente
+  {:path "sente"
+   :doc "adds support for Sente websockets to cljs"}
   :kit/sql
   {:path "sql"
    :doc "adds support for SQL. Available profiles [ :postgres :sqlite ]. Default profile :sqlite"}
