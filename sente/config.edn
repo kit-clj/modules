@@ -12,24 +12,18 @@
                 {:type   :edn
                  :path   "shadow-cljs.edn"
                  :target [:dependencies]
-                 :action :merge
-                 :value  {com.taoensso/sente {:mvn/version "1.17.0"}}}
+                 :action :append
+                 :value  [com.taoensso/sente "1.17.0"]}
                 {:type   :edn
                  :path   "resources/system.edn"
                  :target []
                  :action :merge
-                 :value  {:sente/connection {}}}
-                {:type   :edn
-                 :path   "resources/system.edn"
-                 :target []
-                 :action :merge
-                 :value  {:sente/router
-                          {:connection #ig/ref :sente/connection}}}
-                {:type   :edn
-                 :path   "resources/system.edn"
-                 :target []
-                 :action :merge
-                 :value  {:reitit.routes/ws
+                 :value  {:sente/connection {}
+                          
+                          :sente/router
+                          {:connection #ig/ref :sente/connection}
+
+                          :reitit.routes/ws
                           {:base-path "/ws"
                            :env #ig/ref :system/env
                            :connection #ig/ref :sente/connection}}}
@@ -40,4 +34,4 @@
                 {:type   :clj
                  :path   "src/cljs/<<sanitized>>/core.cljs"
                  :action :append-requires
-                 :value  ["[<<ns-name>>.ws]"]}]}}}
+                 :value  ["[<<ns-name>>.ws :as ws]"]}]}}}
