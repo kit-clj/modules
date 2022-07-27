@@ -1,6 +1,5 @@
-(ns marko.guestbook-sente.web.routes.ws
+(ns <<ns-name>>.web.routes.ws
   (:require
-   [marko.guestbook-sente.web.routes.utils :as utils]
    [reitit.ring.middleware.parameters :as parameters]
    [taoensso.sente :as sente]
    [taoensso.sente.server-adapters.undertow :refer [get-sch-adapter]]

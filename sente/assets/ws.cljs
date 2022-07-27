@@ -1,4 +1,4 @@
-(ns marko.guestbook-sente.ws
+(ns <<ns-name>>.ws
   (:require [taoensso.sente :as sente]))
 
 (let [connection (sente/make-channel-socket! "/ws" js/csrfToken {:type :auto})]
