@@ -14,6 +14,11 @@
                  :target [:dependencies]
                  :action :append
                  :value  [com.taoensso/sente "1.17.0"]}
+                {:type   :html
+                 :path   "resources/html/home.html"
+                 :action :append
+                 :target [:body]
+                 :value  [:script {:type "text/javascript"} "var csrfToken = '{{csrf-token}}';"]}
                 {:type   :edn
                  :path   "resources/system.edn"
                  :target []
