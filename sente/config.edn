@@ -17,7 +17,7 @@
                 {:type   :html
                  :path   "resources/html/home.html"
                  :action :append
-                 :target [:body]
+                 :target [:head]
                  :value  [:script {:type "text/javascript"} "var csrfToken = '{{csrf-token}}';"]}
                 {:type   :edn
                  :path   "resources/system.edn"
