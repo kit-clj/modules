@@ -36,7 +36,8 @@
                  :path   "src/clj/<<sanitized>>/core.clj"
                  :action :append-requires
                  :value  ["[<<ns-name>>.web.routes.ws]"]}
-                {:type   :clj
-                 :path   "src/cljs/<<sanitized>>/core.cljs"
-                 :action :append-requires
-                 :value  ["[<<ns-name>>.ws :as ws]"]}]}}}
+                ;; {:type   :clj
+                ;; :path   "src/cljs/<<sanitized>>/core.cljs"
+                ;; :action :append-requires
+                ;; :value  ["[<<ns-name>>.ws :as ws]"]}
+                ]}}}
