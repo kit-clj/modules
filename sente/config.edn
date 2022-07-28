@@ -1,0 +1,43 @@
+{:default
+ {:require-restart? true
+  :requires [:kit/cljs]
+  :actions
+  {:assets     [["assets/ws.clj"   "src/clj/<<sanitized>>/web/routes/ws.clj"]
+                ["assets/ws.cljs"  "src/cljs/<<sanitized>>/ws.cljs"]]
+   :injections [{:type   :edn
+                 :path   "deps.edn"
+                 :target [:deps]
+                 :action :merge
+                 :value  {com.taoensso/sente {:mvn/version "1.17.0"}}}
+                {:type   :edn
+                 :path   "shadow-cljs.edn"
+                 :target [:dependencies]
+                 :action :append
+                 :value  [com.taoensso/sente "1.17.0"]}
+                {:type   :html
+                 :path   "resources/html/home.html"
+                 :action :append
+                 :target [:head]
+                 :value  [:script {:type "text/javascript"} "var csrfToken = '{{csrf-token}}';"]}
+                {:type   :edn
+                 :path   "resources/system.edn"
+                 :target []
+                 :action :merge
+                 :value  {:sente/connection {}
+                          
+                          :sente/router
+                          {:connection #ig/ref :sente/connection}
+
+                          :reitit.routes/ws
+                          {:base-path "/ws"
+                           :env #ig/ref :system/env
+                           :connection #ig/ref :sente/connection}}}
+                {:type   :clj
+                 :path   "src/clj/<<sanitized>>/core.clj"
+                 :action :append-requires
+                 :value  ["[<<ns-name>>.web.routes.ws]"]}
+                ;; {:type   :clj
+                ;; :path   "src/cljs/<<sanitized>>/core.cljs"
+                ;; :action :append-requires
+                ;; :value  ["[<<ns-name>>.ws :as ws]"]}
+                ]}}}
