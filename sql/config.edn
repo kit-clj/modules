@@ -17,6 +17,11 @@
                                               :db               {:datasource #ig/ref :db.sql/connection}
                                               :migrate-on-init? true}}}
                 {:type   :edn
+                 :path   "resources/system.edn"
+                 :target [:reitit.routes/api]
+                 :action :merge
+                 :value  {:query-fn #ig/ref :db.sql/query-fn}}
+                {:type   :edn
                  :path   "deps.edn"
                  :target [:deps]
                  :action :merge
