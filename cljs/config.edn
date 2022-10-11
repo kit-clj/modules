@@ -45,7 +45,7 @@
                                   :as   s} (shell "npx shadow-cljs release app")]
                              (when-not (zero? exit)
                                (throw (ex-info "could not compile cljs" s)))
-                             (copy-tree "target/classes/cljsbuild/public" "target/classes/")))}
+                             (copy-tree "target/classes/cljsbuild/public" "target/classes/public")))}
                 {:type   :clj
                  :path   "build.clj"
                  :action :append-build-task-call
