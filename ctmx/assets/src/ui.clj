@@ -3,41 +3,47 @@
    [<<ns-name>>.web.middleware.exception :as exception]
    [<<ns-name>>.web.routes.utils :as utils]
    [<<ns-name>>.web.htmx :refer [ui page] :as htmx]
+   [ctmx.core :as ctmx :refer [defcomponent]]
    [integrant.core :as ig]
    [reitit.ring.middleware.muuntaja :as muuntaja]
    [reitit.ring.middleware.parameters :as parameters]))
 
-(defn home [request]
+(defn page-htmx [& body]
   (page
    [:head
     [:meta {:charset "UTF-8"}]
     [:title "Htmx + Kit"]
-    [:script {:src "https://unpkg.com/htmx.org@1.7.0/dist/htmx.min.js" :defer true}]
-    [:script {:src "https://unpkg.com/hyperscript.org@0.9.5" :defer true}]]
-   [:body
-    [:h1 "Welcome to Htmx + Kit module"]
-    [:button {:hx-post "/clicked" :hx-swap "outerHTML"} "Click me!"]]))
+    [:script {:src "https://unpkg.com/htmx.org@1.2.0/dist/htmx.min.js" :defer true}]]
+   [:body body]))
 
-(defn clicked [request]
-  (ui
-   [:div "Congratulations! You just clicked the button!"]))
+(defcomponent ^:endpoint hello [req my-name]
+  [:div#hello "Hello " my-name])
 
-;; Routes
-(defn ui-routes [_opts]
-  [["/" {:get home}]
-   ["/clicked" {:post clicked}]])
+(defn ui-routes [base-path]
+  (ctmx/make-routes
+   base-path
+   (fn [req]
+     (page-htmx
+      [:label {:style "margin-right: 10px"}
+       "What is your name?"]
+      [:input {:type "text"
+               :name "my-name"
+               :hx-patch "hello"
+               :hx-target "#hello"
+               :hx-swap "outerHTML"}]
+      (hello req "")))))
 
 (defn route-data [opts]
   (merge
    opts
-   {:middleware 
+   {:middleware
     [;; Default middleware for ui
-     ;; query-params & form-params
-     parameters/parameters-middleware
-     ;; encoding response body
-     muuntaja/format-response-middleware
-     ;; exception handling
-     exception/wrap-exception]}))
+    ;; query-params & form-params
+      parameters/parameters-middleware
+      ;; encoding response body
+      muuntaja/format-response-middleware
+      ;; exception handling
+      exception/wrap-exception]}))
 
 (derive :reitit.routes/ui :reitit/routes)
 
@@ -45,4 +51,4 @@
   [_ {:keys [base-path]
       :or   {base-path ""}
       :as   opts}]
-  [base-path (route-data opts) (ui-routes opts)])
+  [base-path (route-data opts) (ui-routes base-path)])
