@@ -16,7 +16,7 @@
      :path   "deps.edn"
      :target [:deps]
      :action :merge
-     :value  {ctmx/ctmx {:local/root ".."}}}
+     :value  {ctmx/ctmx {:git/url "https://github.com/whamtet/ctmx"}}}
     {:type   :clj
      :path   "src/clj/<<sanitized>>/core.clj"
      :action :append-requires
