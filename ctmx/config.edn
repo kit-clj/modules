@@ -3,7 +3,8 @@
   :actions
   {:assets
    [["assets/src/ui.clj"   "src/clj/<<sanitized>>/web/routes/ui.clj"]
-    ["assets/src/htmx.clj" "src/clj/<<sanitized>>/web/htmx.clj"]]
+    ["assets/src/htmx.clj" "src/clj/<<sanitized>>/web/htmx.clj"]
+    ["assets/src/hello.clj" "src/clj/<<sanitized>>/web/views/hello.clj"]]
    :injections
    [{:type   :edn
      :path   "resources/system.edn"
