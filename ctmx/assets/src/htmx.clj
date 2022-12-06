@@ -13,3 +13,11 @@
   (-> (h/html opts content)
       http-response/ok
       (http-response/content-type "text/html")))
+
+(defn page-htmx [& body]
+  (page
+   [:head
+    [:meta {:charset "UTF-8"}]
+    [:title "Htmx + Kit"]
+    [:script {:src "https://unpkg.com/htmx.org@1.2.0/dist/htmx.min.js" :defer true}]]
+   [:body body]))
