@@ -1,6 +1,7 @@
 (ns <<ns-name>>.web.routes.ui
   (:require
    [<<ns-name>>.web.middleware.exception :as exception]
+   [<<ns-name>>.web.middleware.formats :as formats]
    [<<ns-name>>.web.routes.utils :as utils]
    [<<ns-name>>.web.htmx :refer [ui page] :as htmx]
    [integrant.core :as ig]
@@ -30,7 +31,8 @@
 (defn route-data [opts]
   (merge
    opts
-   {:middleware 
+   {:muuntaja   formats/instance
+    :middleware
     [;; Default middleware for ui
      ;; query-params & form-params
      parameters/parameters-middleware
