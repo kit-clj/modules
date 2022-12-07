@@ -1,4 +1,4 @@
-(ns kit.guestbook.web.routes.ui
+(ns <<ns-name>>.web.routes.ui
   (:require
    [<<ns-name>>.web.middleware.exception :as exception]
    [<<ns-name>>.web.views.hello :as hello]
