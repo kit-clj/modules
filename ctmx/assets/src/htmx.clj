@@ -1,5 +1,6 @@
 (ns <<ns-name>>.web.htmx
   (:require
+   [cmtx.render :as render]
    [ring.util.http-response :as http-response]
    [hiccup.core :as h]
    [hiccup.page :as p]))
@@ -20,4 +21,4 @@
     [:meta {:charset "UTF-8"}]
     [:title "Htmx + Kit"]
     [:script {:src "https://unpkg.com/htmx.org@1.2.0/dist/htmx.min.js" :defer true}]]
-   [:body body]))
+   [:body (render/walk-attrs body)]))
