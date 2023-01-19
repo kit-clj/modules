@@ -8,7 +8,7 @@
    :doc "adds support for HTMX using hiccup"}
   :kit/ctmx
   {:path "ctmx"
-   :doc "adds support for CTMX"}
+   :doc "adds support for HTMX using CTMX"}
   :kit/metrics
   {:path "metrics"
    :doc "adds support for metrics using prometheus through iapetos"}
