@@ -1,0 +1,25 @@
+{:default
+ {:require-restart? true
+  :actions
+  {:assets
+   [["assets/src/ui.clj"   "src/clj/<<sanitized>>/web/routes/ui.clj"]
+    ["assets/src/htmx.clj" "src/clj/<<sanitized>>/web/htmx.clj"]
+    ["assets/src/hello.clj" "src/clj/<<sanitized>>/web/views/hello.clj"]]
+   :injections
+   [{:type   :edn
+     :path   "resources/system.edn"
+     :target []
+     :action :merge
+     :value  {:reitit.routes/ui
+              {:base-path ""
+               :env       #ig/ref :system/env}}}
+    {:type   :edn
+     :path   "deps.edn"
+     :target [:deps]
+     :action :merge
+     :value  {ctmx/ctmx {:git/url "https://github.com/whamtet/ctmx"
+                         :git/sha "8dc4d32e742baccea4bd8cbd017f4eff80aa51aa"}}}
+    {:type   :clj
+     :path   "src/clj/<<sanitized>>/core.clj"
+     :action :append-requires
+     :value  ["[<<ns-name>>.web.routes.ui]"]}]}}}
