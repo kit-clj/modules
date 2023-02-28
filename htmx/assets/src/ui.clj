@@ -28,18 +28,16 @@
   [["/" {:get home}]
    ["/clicked" {:post clicked}]])
 
-(defn route-data [opts]
-  (merge
-   opts
-   {:muuntaja   formats/instance
-    :middleware
-    [;; Default middleware for ui
-     ;; query-params & form-params
-     parameters/parameters-middleware
-     ;; encoding response body
-     muuntaja/format-response-middleware
-     ;; exception handling
-     exception/wrap-exception]}))
+(def route-data
+  {:muuntaja   formats/instance
+   :middleware
+   [;; Default middleware for ui
+    ;; query-params & form-params
+    parameters/parameters-middleware
+    ;; encoding response body
+    muuntaja/format-response-middleware
+    ;; exception handling
+    exception/wrap-exception]})
 
 (derive :reitit.routes/ui :reitit/routes)
 
@@ -47,4 +45,4 @@
   [_ {:keys [base-path]
       :or   {base-path ""}
       :as   opts}]
-  [base-path (route-data opts) (ui-routes opts)])
+  [base-path route-data (ui-routes opts)])
