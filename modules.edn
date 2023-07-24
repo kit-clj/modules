@@ -1,6 +1,9 @@
 {:name "kit-modules"
  :modules
- {:kit/html
+ {:kit/auth
+  {:path "auth"
+   :doc "adds support for auth middleware using Buddy"}
+  :kit/html
   {:path "html"
    :doc "adds support for HTML templating using Selmer"}
   :kit/htmx

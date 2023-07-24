@@ -1,0 +1,9 @@
+{:default
+ {:require-restart? true
+  :actions
+  {:assets           [["assets/src/auth.clj" "src/clj/<<sanitized>>/web/routes/middleware/auth.clj"]]
+   :injections       [{:type   :edn
+                       :path   "deps.edn"
+                       :target [:deps]
+                       :action :merge
+                       :value  {buddy/buddy-auth {:mvn/version "3.0.323"}}}]}}}
