@@ -1,7 +1,7 @@
 {:default
  {:require-restart? true
   :actions
-  {:assets           [["assets/src/auth.clj" "src/clj/<<sanitized>>/web/routes/middleware/auth.clj"]]
+  {:assets           [["assets/src/auth.clj" "src/clj/<<sanitized>>/web/middleware/auth.clj"]]
    :injections       [{:type   :edn
                        :path   "deps.edn"
                        :target [:deps]
