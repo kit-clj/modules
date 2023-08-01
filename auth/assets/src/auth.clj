@@ -1,4 +1,4 @@
-(ns <<ns-name>>.web.routes.middleware.auth
+(ns <<ns-name>>.web.middleware.auth
   (:require
    [buddy.auth.backends.session :as session]
    [buddy.auth :as auth]
