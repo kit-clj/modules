@@ -5,7 +5,7 @@
    :doc "adds support for auth middleware using Buddy"}
   :kit/devcontainer
   {:path "devcontainer"
-   :doc "adds support for devcontainer"}
+   :doc "adds support for devcontainer. Available profiles [ :default :compose ]. Default profile uses a single docker file."}
   :kit/html
   {:path "html"
    :doc "adds support for HTML templating using Selmer"}
