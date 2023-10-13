@@ -1,0 +1,6 @@
+{:default
+ {:require-restart? false
+  :actions
+  {:assets
+   [["assets/docker/devcontainer.json"   ".devcontainer/devcontainer.json"]
+    ["assets/docker/Dockerfile.dev"   ".devcontainer/Dockerfile.dev"]]}}}

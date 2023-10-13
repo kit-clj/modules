@@ -3,6 +3,9 @@
  {:kit/auth
   {:path "auth"
    :doc "adds support for auth middleware using Buddy"}
+  :kit/devcontainer
+  {:path "devcontainer"
+   :doc "adds support for devcontainer"}
   :kit/html
   {:path "html"
    :doc "adds support for HTML templating using Selmer"}
