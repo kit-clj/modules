@@ -1,0 +1,13 @@
+{:default
+ {:require-restart? false
+  :actions
+  {:assets
+   [["assets/docker/devcontainer.json"   ".devcontainer/devcontainer.json"]
+    ["assets/Dockerfile.dev"   ".devcontainer/Dockerfile.dev"]]}}
+ :compose
+ {:require-restart? false
+  :actions
+  {:assets
+   [["assets/compose/devcontainer.json"   ".devcontainer/devcontainer.json"]
+    ["assets/compose/docker-compose.yml"   ".devcontainer/docker-compose.yml"]
+    ["assets/Dockerfile.dev"   ".devcontainer/Dockerfile.dev"]]}}}
