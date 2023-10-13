@@ -1,8 +1,7 @@
 {
   "name": "Kit devcontainer",
-  "build": {
-    "dockerfile": "Dockerfile.dev"
-  },
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "devcontainer",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   // More info: https://containers.dev/features.
   "features": {},
