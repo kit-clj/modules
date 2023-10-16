@@ -1,0 +1,11 @@
+{:default
+ {:require-restart? true
+  :actions
+  {:assets
+   [["assets/src/quartz.clj"   "src/clj/<<sanitized>>/edge/scheduling/quartz.clj"]]
+   :injections
+   [{:type   :edn
+     :path   "deps.edn"
+     :target [:deps]
+     :action :merge
+     :value  {com.troy-west/cronut       {:mvn/version "0.2.6"}}}]}}}
