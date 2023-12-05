@@ -17,8 +17,8 @@
      :path   "deps.edn"
      :target [:deps]
      :action :merge
-     :value  {ctmx/ctmx {:git/url "https://github.com/whamtet/ctmx"
-                         :git/sha "8dc4d32e742baccea4bd8cbd017f4eff80aa51aa"}}}
+     :value  {simpleui/simpleui {:git/url "https://github.com/whamtet/simpleui"
+                                 :git/sha "a107d7a8a69755dae6cd9954992614a86504c257"}}}
     {:type   :clj
      :path   "src/clj/<<sanitized>>/core.clj"
      :action :append-requires
