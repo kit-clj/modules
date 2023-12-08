@@ -14,7 +14,7 @@
    :doc "adds support for HTMX using hiccup"}
   :kit/simpleui
   {:path "simpleui"
-   :doc "adds support for HTMX using SimpleUI"}
+   :doc "adds support for HTMX using SimpleUI (previously called ctmx)"}
   :kit/metrics
   {:path "metrics"
    :doc "adds support for metrics using prometheus through iapetos"}
