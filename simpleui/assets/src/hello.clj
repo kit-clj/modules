@@ -1,13 +1,13 @@
 (ns <<ns-name>>.web.views.hello
     (:require
-      [ctmx.core :as ctmx :refer [defcomponent]]
+      [simpleui.core :as simpleui :refer [defcomponent]]
       [<<ns-name>>.web.htmx :refer [page-htmx]]))
 
 (defcomponent ^:endpoint hello [req my-name]
   [:div#hello "Hello " my-name])
 
 (defn ui-routes [base-path]
-  (ctmx/make-routes
+  (simpleui/make-routes
    base-path
    (fn [req]
      (page-htmx

@@ -1,6 +1,6 @@
 (ns <<ns-name>>.web.htmx
   (:require
-   [ctmx.render :as render]
+   [simpleui.render :as render]
    [ring.util.http-response :as http-response]
    [hiccup.core :as h]
    [hiccup.page :as p]))
