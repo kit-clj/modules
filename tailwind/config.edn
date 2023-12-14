@@ -1,0 +1,10 @@
+{:default
+ {:require-restart? true
+  :actions
+  {:assets
+   [["assets/input.css" "tailwind/input.css"]
+    ["assets/main.cljs" "autogen/main.cljs"]
+    ["assets/process.cljs" "autogen/process.cljs"]
+    ["assets/tailwind.config.js" "tailwind.config.js"]
+    ["assets/package.json" "package.json"]
+    ["assets/tailwind.README.md" "tailwind.README.md"]]}}}

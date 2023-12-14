@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "nbb": "1.2.173",
+    "node-watch": "^0.7.4",
+    "recursive-readdir": "^2.2.3",
+    "tailwindcss": "^3.3.3"
+  },
+  "scripts": {
+    "tailwind:extract-classes": "nbb -m autogen.main",
+    "tailwind:watch": "nbb -m autogen.main -w"
+  }
+}
