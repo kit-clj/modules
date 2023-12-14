@@ -66,7 +66,7 @@
 (defn- render-vector [indent [tag m & children]]
   (let [tag-str (get-tag tag)
         classes (.trim (str (tag->classes tag) " " (get-class m)))]
-    (format "%s<%s class=\"%s\">\n%s\n%s</%s>"
+    (format "%s"
             (indent-str indent)
             tag-str
             classes
