@@ -7,4 +7,4 @@
     ["assets/process.cljs" "autogen/process.cljs"]
     ["assets/tailwind.config.js" "tailwind.config.js"]
     ["assets/package.json" "package.json"]
-    ["assets/tailwind.README.md" "tailwind.README.md"]]}}}
+    ["assets/README.tailwind.md" "README.tailwind.md"]]}}}
