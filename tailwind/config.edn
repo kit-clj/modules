@@ -1,5 +1,5 @@
 {:default
- {:require-restart? true
+ {:require-restart? false
   :actions
   {:assets
    [["assets/input.css" "tailwind/input.css"]
