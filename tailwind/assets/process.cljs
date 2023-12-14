@@ -66,13 +66,19 @@
 (defn- render-vector [indent [tag m & children]]
   (let [tag-str (get-tag tag)
         classes (.trim (str (tag->classes tag) " " (get-class m)))]
-    (format "%s"
-            (indent-str indent)
-            tag-str
-            classes
-            (render-hiccup (inc indent) children)
-            (indent-str indent)
-            tag-str)))
+    (str
+     (indent-str indent)
+     "<"
+     tag-str
+     " class=\""
+     classes
+     "\">\n"
+     (render-hiccup (inc indent) children)
+     "\n"
+     (indent-str indent)
+     "</"
+     tag-str
+     ">")))
 
 (defn- render-hiccup [indent s]
   (cond
