@@ -29,4 +29,7 @@
    :doc "adds support for cljs using shadow-cljs"}
   :kit/nrepl
   {:path "nrepl"
-   :doc "adds support for nREPL"}}}
+   :doc "adds support for nREPL"}
+  :kit/tailwind
+  {:path "tailwind"
+   :doc "adds support for tailwindcss"}}}
