@@ -93,6 +93,7 @@
 
 (defn skip-macros [s]
   (-> s
+      (.replaceAll "::" ":")
       (.replaceAll "`" "")
       (.replaceAll "~" "")
       (.replaceAll "@" "")
@@ -126,4 +127,4 @@
 
 (defn process-file [f]
   (p/let [hiccup (get-hiccup f)]
-    (->> hiccup html (spit f))))
+    (some->> hiccup not-empty html (spit f))))

@@ -1,19 +1,22 @@
 (ns autogen.main
   (:require
     [autogen.process :as process]
+    ["node:child_process" :as child-process]
     ["node-watch$default" :as watch-files]
     [promesa.core :as p]
     ["recursive-readdir$default" :as recursive]))
 
 (defn tailwind []
-  (set! (.-argv js/process)
-    #js [nil
-         nil
-         "-i"
-         "./tailwind/input.css"
-         "-o"
-         "./resources/public/output.css"])
-  (js/require "tailwindcss/lib/cli"))
+  (let [cp
+        (child-process/spawn
+         "npx"
+         #js ["tailwindcss" "-i" "./tailwind/input.css" "-o" "./resources/public/output.css"])]
+    (-> cp
+        .-stdout
+        (.on "data" #(-> % .toString js/console.log)))
+    (-> cp
+        .-stderr
+        (.on "data" #(-> % .toString js/console.error)))))
 
 (defn- src? [f]
   (or
