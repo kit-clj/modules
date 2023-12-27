@@ -2,7 +2,8 @@
  {:require-restart? true
   :actions
   {:assets
-   [["assets/src/ui.clj"   "src/clj/<<sanitized>>/web/routes/ui.clj"]
+   [["assets/src/core.clj" "src/clj/<<sanitized>>/web/middleware/core.clj"]
+    ["assets/src/ui.clj"   "src/clj/<<sanitized>>/web/routes/ui.clj"]
     ["assets/src/htmx.clj" "src/clj/<<sanitized>>/web/htmx.clj"]
     ["assets/src/domino.clj" "src/clj/<<sanitized>>/web/domino.clj"]
     ["assets/src/ws.clj" "src/clj/<<sanitized>>/web/ws.clj"]

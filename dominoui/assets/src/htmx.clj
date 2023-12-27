@@ -20,7 +20,7 @@
    [:head
     [:meta {:charset "UTF-8"}]
     [:title "DominoUI + Kit"]]
-   [:body {:hx-ext "ws" :ws-connect "/api/ws"}
+   [:body {:hx-ext "ws" :ws-connect "/ws"}
     (render/walk-attrs body)
     [:script {:src "https://unpkg.com/htmx.org@1.9.9"}]
     [:script {:src "https://unpkg.com/htmx.org@1.9.9/dist/ext/ws.js"}]]))

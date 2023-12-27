@@ -3,6 +3,7 @@
    [<<ns-name>>.web.middleware.exception :as exception]
    [<<ns-name>>.web.middleware.formats :as formats]
    [<<ns-name>>.web.views.home :as home]
+   [<<ns-name>>.web.ws :as ws]
    [integrant.core :as ig]
    [reitit.ring.middleware.muuntaja :as muuntaja]
    [reitit.ring.middleware.parameters :as parameters]))
@@ -26,4 +27,10 @@
   [_ {:keys [base-path]
       :or   {base-path ""}
       :as   opts}]
-  [base-path (route-data opts) (home/ui-routes base-path)])
+  [base-path (route-data opts)
+   (conj (home/ui-routes base-path)
+         ["/ws"
+          (fn [_req]
+            {:undertow/websocket
+             {:on-open (fn [{:keys [channel]}] (ws/add-channel channel))
+              :on-close-message (fn [{:keys [channel]}] (ws/remove-channel channel))}})])])
