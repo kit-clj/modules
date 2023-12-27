@@ -15,6 +15,9 @@
   :kit/simpleui
   {:path "simpleui"
    :doc "adds support for HTMX using SimpleUI (previously called ctmx)"}
+  :kit/dominoui
+  {:path "dominoui"
+   :doc "adds support for HTMX using SimpleUI and Domino"}
   :kit/metrics
   {:path "metrics"
    :doc "adds support for metrics using prometheus through iapetos"}

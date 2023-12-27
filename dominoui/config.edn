@@ -1,0 +1,28 @@
+{:default
+ {:require-restart? true
+  :actions
+  {:assets
+   [["assets/src/ui.clj"   "src/clj/<<sanitized>>/web/routes/ui.clj"]
+    ["assets/src/htmx.clj" "src/clj/<<sanitized>>/web/htmx.clj"]
+    ["assets/src/domino.clj" "src/clj/<<sanitized>>/web/domino.clj"]
+    ["assets/src/ws.clj" "src/clj/<<sanitized>>/web/ws.clj"]
+    ["assets/src/home.clj" "src/clj/<<sanitized>>/web/views/home.clj"]]
+   :injections
+   [{:type   :edn
+     :path   "resources/system.edn"
+     :target []
+     :action :merge
+     :value  {:reitit.routes/ui
+              {:base-path ""
+               :env       #ig/ref :system/env}}}
+    {:type   :edn
+     :path   "deps.edn"
+     :target [:deps]
+     :action :merge
+     :value  {simpleui/simpleui {:git/url "https://github.com/whamtet/simpleui"
+                                 :git/sha "a107d7a8a69755dae6cd9954992614a86504c257"}
+              domino/core {:mvn/version "0.4.0-alpha.3"}}}
+    {:type   :clj
+     :path   "src/clj/<<sanitized>>/core.clj"
+     :action :append-requires
+     :value  ["[<<ns-name>>.web.routes.ui]"]}]}}}
