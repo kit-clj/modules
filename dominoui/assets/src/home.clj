@@ -18,6 +18,7 @@
   (simpleui/make-routes
    base-path
    (fn [req]
-     (page-htmx
-      (bmi-form req)))))
+     (let [session (or (not-empty (:session req)) domino/initial-session)
+           req (assoc req :session session)]
+       (-> req bmi-form page-htmx (assoc :session session))))))
 
