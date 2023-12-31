@@ -1,0 +1,3 @@
+{:default
+ {:require-restart? true
+  :requires [[:kit/sql {:feature-flag :postgres}]]}}
