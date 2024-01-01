@@ -16,7 +16,7 @@
      :path   "deps.edn"
      :target [:deps]
      :action :merge
-     :value  {hiccup/hiccup {:mvn/version "1.0.5"}}}
+     :value  {hiccup/hiccup {:mvn/version "2.0.0-alpha2"}}}
     {:type   :clj
      :path   "src/clj/<<sanitized>>/core.clj"
      :action :append-requires
