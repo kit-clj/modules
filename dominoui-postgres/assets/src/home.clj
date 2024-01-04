@@ -14,11 +14,12 @@
           (domino/select session :weight)
           (domino/select session :bmi))))
 
-(defn ui-routes [base-path]
+(defn ui-routes [{:keys [query-fn]}]
   (simpleui/make-routes
-   base-path
+   ""
    (fn [req]
-     (let [session (or (not-empty (:session req)) (domino/initial-session req))
+     (let [req (assoc req :query-fn query-fn)
+           session (or (not-empty (:session req)) (domino/initial-session req))
            req (assoc req :session session)]
        (-> req bmi-form page-htmx (assoc :session session))))))
 
