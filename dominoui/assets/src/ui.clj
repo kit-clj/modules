@@ -28,7 +28,7 @@
       :or   {base-path ""}
       :as   opts}]
   [base-path (route-data opts)
-   (conj (home/ui-routes base-path)
+   (conj (home/ui-routes opts)
          ["/ws"
           (fn [_req]
             {:undertow/websocket

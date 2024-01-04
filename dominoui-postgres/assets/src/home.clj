@@ -1,5 +1,6 @@
 (ns <<ns-name>>.web.views.home
     (:require
+      [<<ns-name>>.web.controllers.user :as user]
       [<<ns-name>>.web.domino :as domino]
       [<<ns-name>>.web.htmx :refer [page-htmx]]
       [<<ns-name>>.web.views.disp.home :as disp.home]
@@ -7,18 +8,26 @@
 
 (defcomponent ^:endpoint bmi-form [{:keys [session] :as req} ^:double height ^:double weight]
   (cond
-   height (domino/transact session :height height)
-   weight (domino/transact session :weight weight)
+   height
+   (do
+     (user/set-height req height)
+     (domino/transact session :height height))
+   weight
+   (do
+     (user/set-weight req weight)
+     (domino/transact session :weight weight))
    :else (disp.home/form
           (domino/select session :height)
           (domino/select session :weight)
           (domino/select session :bmi))))
 
-(defn ui-routes [_]
+(defn ui-routes [{:keys [query-fn]}]
   (simpleui/make-routes
    ""
+   [query-fn]
    (fn [req]
-     (let [session (or (not-empty (:session req)) domino/initial-session)
+     (let [req (assoc req :query-fn query-fn)
+           session (or (not-empty (:session req)) (domino/initial-session req))
            req (assoc req :session session)]
        (-> req bmi-form page-htmx (assoc :session session))))))
 

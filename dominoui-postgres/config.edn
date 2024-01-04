@@ -1,0 +1,16 @@
+{:default
+ {:require-restart? true
+  :requires [[:kit/sql {:feature-flag :postgres}] :kit/dominoui]
+  :actions
+   {:assets [["assets/migrations/20240104143537-user-info.up.sql" "resources/migrations/20240104143537-user-info.up.sql"]
+             ["assets/migrations/20240104143537-user-info.down.sql" "resources/migrations/20240104143537-user-info.down.sql"]
+             ["assets/sql/queries.sql" "resources/sql/queries.sql" :force]
+             ["assets/src/user.clj" "src/clj/<<sanitized>>/web/controllers/user.clj"]
+             ["assets/src/domino.clj" "src/clj/<<sanitized>>/web/domino.clj" :force]
+             ["assets/src/home.clj" "src/clj/<<sanitized>>/web/views/home.clj" :force]]
+    :injections
+    [{:type   :edn
+      :path   "resources/system.edn"
+      :target [:reitit.routes/ui]
+      :action :merge
+      :value  {:query-fn #ig/ref :db.sql/query-fn}}]}}}

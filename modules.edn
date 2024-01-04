@@ -18,6 +18,9 @@
   :kit/dominoui
   {:path "dominoui"
    :doc "adds support for HTMX using SimpleUI and Domino"}
+  :kit/dominoui-postgres
+  {:path "dominoui-postgres"
+   :doc "adds support for HTMX using SimpleUI and Domino.  Includes sample postgres"}
   :kit/metrics
   {:path "metrics"
    :doc "adds support for metrics using prometheus through iapetos"}
