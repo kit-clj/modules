@@ -7,4 +7,10 @@
              ["assets/sql/queries.sql" "resources/sql/queries.sql"]
              ["assets/src/user.clj" "src/clj/<<sanitized>>/web/controllers/user.clj"]
              ["assets/src/domino.clj" "src/clj/<<sanitized>>/web/domino.clj" :force]
-             ["assets/src/home.clj" "src/clj/<<sanitized>>/web/views/home.clj" :force]]}}}
+             ["assets/src/home.clj" "src/clj/<<sanitized>>/web/views/home.clj" :force]]
+    :injections
+    [{:type   :edn
+      :path   "resources/system.edn"
+      :target [:reitit.routes/ui]
+      :action :merge
+      :value  {:query-fn #ig/ref :db.sql/query-fn}}]}}}
