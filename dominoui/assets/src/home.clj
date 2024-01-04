@@ -14,9 +14,9 @@
           (domino/select session :weight)
           (domino/select session :bmi))))
 
-(defn ui-routes [base-path]
+(defn ui-routes [_]
   (simpleui/make-routes
-   base-path
+   ""
    (fn [req]
      (let [session (or (not-empty (:session req)) domino/initial-session)
            req (assoc req :session session)]

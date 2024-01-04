@@ -27,8 +27,9 @@
                           (disp.home/bmi-label bmi)))}]})
 
 (defn initial-session [req]
-  (user/get-user req)
-  (domino/initialize schema {:demographics {:height 1.6 :weight 60.0}}))
+  (let [{:keys [height weight]} (user/get-user req)]
+    (domino/initialize schema {:demographics {:height (or height 1.6)
+                                              :weight (or weight 60.0)}})))
 
 (defn transact [session id v]
   (assoc response/no-content

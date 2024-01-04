@@ -3,9 +3,14 @@
 -- :name user-by-id :query :one
 select * from user_info where user_id = :user-id
 
--- :name upsert-user :execute
-insert into user_info (user_id, height, weight)
-values (:user-id, :height, :weight)
+-- :name set-weight :execute
+insert into user_info (user_id, weight)
+values (:user-id, :weight)
 on conflict (user_id) do update
-set height = EXCLUDED.height,
-weight = EXCLUDED.weight;
+set weight = EXCLUDED.weight;
+
+-- :name set-height :execute
+insert into user_info (user_id, height)
+values (:user-id, :height)
+on conflict (user_id) do update
+set height = EXCLUDED.height;

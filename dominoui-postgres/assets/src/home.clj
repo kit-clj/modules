@@ -17,6 +17,7 @@
 (defn ui-routes [{:keys [query-fn]}]
   (simpleui/make-routes
    ""
+   [query-fn]
    (fn [req]
      (let [req (assoc req :query-fn query-fn)
            session (or (not-empty (:session req)) (domino/initial-session req))
