@@ -8,7 +8,7 @@
 
 ;; adapted from domino README.md
 
-(def schema
+(defn- schema [{:keys [query-fn]}]
   {:model   [[:demographics
               [:height {:id :height}]
               [:weight {:id :weight}]]
@@ -24,12 +24,18 @@
    :effects [{:inputs [:bmi]
               :handler (fn [{{:keys [bmi]} :inputs}]
                          (ws/broadcast
-                          (disp.home/bmi-label bmi)))}]})
+                          (disp.home/bmi-label bmi)))}
+             {:inputs [:weight]
+              :handler (fn [{{:keys [weight]} :inputs}]
+                         (user/set-weight query-fn weight))}
+             {:inputs [:height]
+              :handler (fn [{{:keys [height]} :inputs}]
+                         (user/set-height query-fn height))}]})
 
 (defn initial-session [req]
   (let [{:keys [height weight]} (user/get-user req)]
-    (domino/initialize schema {:demographics {:height (or height 1.6)
-                                              :weight (or weight 60.0)}})))
+    (domino/initialize (schema req) {:demographics {:height (or height 1.6)
+                                                    :weight (or weight 60.0)}})))
 
 (defn transact [session id v]
   (assoc response/no-content
