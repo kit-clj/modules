@@ -10,7 +10,9 @@
 (def selmer-opts {:custom-resource-path (clojure.java.io/resource "html")})
 
 (defn init-selmer!
-  []
+  [{:keys [env]}]
+  ;; disable HTML template caching for live reloading during development
+  (when (= :dev env) (parser/cache-off!))
   (parser/add-tag! :csrf-field (fn [_ _] (anti-forgery-field))))
 
 (defn render
