@@ -38,4 +38,6 @@
    :doc "adds support for nREPL"}
   :kit/tailwind
   {:path "tailwind"
-   :doc "adds support for tailwindcss"}}}
+   :doc "adds support for tailwindcss"}
+  {:path "hato"
+   :doc "adds support for kit-Hato HTTP client"}}}

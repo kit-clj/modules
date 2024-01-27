@@ -1,0 +1,19 @@
+{:default
+ {:require-restart? true
+  :actions
+  {:assets     []
+   :injections [{:type   :edn
+                 :path   "deps.edn"
+                 :target [:deps]
+                 :action :merge
+                 :value  {io.github.kit-clj/kit-hato {:mvn/version "1.0.2"}}}
+                {:type   :edn
+                 :path   "resources/system.edn"
+                 :target []
+                 :action :merge
+                 :value  {:http/client {}}}
+                {:type   :edn
+                 :path   "resources/system.edn"
+                 :target [:reitit.routes/api]
+                 :action :merge
+                 :value  {:http/client #ig/ref :http/client}}]}}}
