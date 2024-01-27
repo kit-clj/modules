@@ -39,5 +39,6 @@
   :kit/tailwind
   {:path "tailwind"
    :doc "adds support for tailwindcss"}
+  :kit/hato
   {:path "hato"
    :doc "adds support for kit-Hato HTTP client"}}}
