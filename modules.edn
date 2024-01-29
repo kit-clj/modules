@@ -41,4 +41,7 @@
    :doc "adds support for tailwindcss"}
   :kit/hato
   {:path "hato"
-   :doc "adds support for kit-Hato HTTP client"}}}
+   :doc "adds support for kit-Hato HTTP client"}
+  :kit/codox
+  {:path "codox"
+   :doc "adds support for codox"}}}
