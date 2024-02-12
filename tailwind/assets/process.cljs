@@ -121,7 +121,7 @@
 (defn spit [f s]
   (.writeFile
     fs
-    (format "tailwind/auto_%s.html" (.replaceAll f "/" "_"))
+    (format "target/generated-sources/tailwind/auto_%s.html" (.replaceAll f "/" "_"))
     s
     #()))
 
