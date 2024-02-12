@@ -4,7 +4,9 @@
     ["node:child_process" :as child-process]
     ["node-watch$default" :as watch-files]
     [promesa.core :as p]
-    ["recursive-readdir$default" :as recursive]))
+    ["recursive-readdir$default" :as recursive]
+    ["fs" :as fs]
+))
 
 (defn tailwind []
   (let [cp
@@ -45,7 +47,9 @@
            (let [files (filter src? files)]
              (if (empty? files)
                (js/console.error "No files found")
-               (p/do
+               (p/do 
+                (.mkdir fs "target/generated-sources/tailwind"
+                        #js {:recursive true} #(.error js/console %))
                 (p/all (map process/process-file files))
                 (when watch? (watch path))))))))
       (println "please provide path"))))
