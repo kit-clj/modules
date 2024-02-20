@@ -45,4 +45,4 @@
   [_ {:keys [base-path]
       :or   {base-path ""}
       :as   opts}]
-  [base-path route-data (ui-routes opts)])
+  (fn [] [base-path route-data (ui-routes opts)]))
