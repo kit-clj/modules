@@ -44,4 +44,7 @@
    :doc "adds support for kit-Hato HTTP client"}
   :kit/codox
   {:path "codox"
-   :doc "adds support for codox"}}}
+   :doc "adds support for codox"}
+  :kit/datomic
+  {:path "datomic"
+   :doc "adds support for Datomic"}}}

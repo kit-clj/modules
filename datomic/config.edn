@@ -1,0 +1,26 @@
+{:default
+ {:require-restart? true
+  :actions
+  {:assets [["assets/src/datomic.clj" "src/clj/<<sanitized>>/datomic.clj"]]
+   :injections
+   [{:action :merge
+     :path "resources/system.edn"
+     :target []
+     :type :edn
+     :value
+     {:db.datomic/conn
+      #profile
+       {:dev  {:db-uri #or [#env DATOMIC_DB_URI "datomic:dev://localhost:4334/<<name>>"]}
+        :test {:db-uri #or [#env DATOMIC_DB_URI_TEST "datomic:dev://localhost:4334/<<name>>_test"]}
+        :prod {:db-uri #env DATOMIC_DB_URI}}}}
+
+    {:action :merge
+     :path   "deps.edn"
+     :target [:deps]
+     :type   :edn
+     :value  {com.datomic/peer {:mvn/version "1.0.7075"}}}
+
+    {:action :append-requires
+     :path   "src/clj/<<sanitized>>/core.clj"
+     :type   :clj
+     :value  ["[<<ns-name>>.datomic]"]}]}}}
