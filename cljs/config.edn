@@ -1,10 +1,10 @@
 {:default
+ {:feature-requires [:base :reagent]}
+
+ :base
  {:require-restart? true
-  :requires [:kit/html]
   :actions
-  {:assets     [["assets/shadow-cljs.edn" "shadow-cljs.edn"]
-                ["assets/package.json"    "package.json"]
-                ["assets/src/core.cljs"   "src/cljs/<<sanitized>>/core.cljs"]]
+  {:assets     [["assets/shadow-cljs.edn" "shadow-cljs.edn"]]
    :injections [{:type   :html
                  :path   "resources/html/home.html"
                  :action :append
@@ -49,4 +49,33 @@
                 {:type   :clj
                  :path   "build.clj"
                  :action :append-build-task-call
-                 :value  (build-cljs)}]}}}
+                 :value  (build-cljs)}]}}
+ :reagent
+ {:requires [:kit/html]
+  :feature-requires [:base]
+
+  :actions
+  {:assets [["assets/src/core.cljs" "src/cljs/<<sanitized>>/core.cljs"]
+            ["assets/package.json"    "package.json"]]
+   :injections [{:type   :edn
+                 :path   "shadow-cljs.edn"
+                 :target [:dependencies]
+                 :action :append
+                 :value  [reagent "1.1.0"]}]}}
+
+ :uix
+ {:requires [:kit/html]
+  :feature-requires [:base]
+  :actions
+  {:assets [["assets/src/core.uix.cljs" "src/cljs/<<sanitized>>/core.cljs"]
+            ["assets/package.uix.json"    "package.json"]]
+   :injections [{:type   :edn
+                 :path   "shadow-cljs.edn"
+                 :target [:dependencies]
+                 :action :append
+                 :value  [com.pitch/uix.core  "1.1.0"]}
+                {:type :edn
+                 :path "shadow-cljs.edn"
+                 :target [:dependencies]
+                 :action :append
+                 :value [com.pitch/uix.dom  "1.1.0"]}]}}}
