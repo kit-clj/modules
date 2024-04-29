@@ -97,16 +97,15 @@
       (.replaceAll "`" "")
       (.replaceAll "~" "")
       (.replaceAll "@" "")
+      (.replaceAll "#\"" "\"")
+      (.replaceAll "\\d" "d")
       (.replaceAll "#(" "(")))
 
 (defn read-src [f]
   (p/let [s (slurp f)
           s (skip-macros s)]
-    (try
-      (edn/read-string
-       (str "[" s "]"))
-      (catch js/Error e
-        (println "Warning:" e "in" f)))))
+    (edn/read-string
+     (str "[" s "]"))))
 
 (defn get-hiccup* [m]
   (cond
