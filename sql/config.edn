@@ -54,7 +54,11 @@
  :postgres
  {:feature-requires [:base]
   :actions
-  {:injections [{:type   :edn
+  {:injections [{:type   :clj
+                 :path   "src/clj/<<sanitized>>/core.clj"
+                 :action :append-requires
+                 :value  ["[kit.edge.db.postgres]"]}
+                {:type   :edn
                  :path   "resources/system.edn"
                  :target []
                  :action :merge
@@ -66,4 +70,5 @@
                  :path   "deps.edn"
                  :target [:deps]
                  :action :merge
-                 :value  {org.postgresql/postgresql {:mvn/version "42.3.4"}}}]}}}
+                 :value  {org.postgresql/postgresql {:mvn/version "42.3.4"}
+                          io.github.kit-clj/kit-postgres {:mvn/version "1.0.7"}}}]}}}
