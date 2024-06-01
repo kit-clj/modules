@@ -38,5 +38,5 @@
       :or   {base-path ""}
       :as   opts}]
   (layout/init-selmer! opts)
-  [base-path route-data (page-routes opts)])
+  (fn [] [base-path route-data (page-routes opts)]))
 
