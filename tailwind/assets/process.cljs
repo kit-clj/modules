@@ -92,14 +92,17 @@
           (->> s insert-maps (render-hiccup 0))))
 
 (defn skip-macros [s]
-  (-> s
-      (.replaceAll "::" ":")
-      (.replaceAll "`" "")
-      (.replaceAll "~" "")
-      (.replaceAll "@" "")
-      (.replaceAll "#\"" "\"")
-      (.replaceAll "\\d" "d")
-      (.replaceAll "#(" "(")))
+  (reduce
+   (fn [s [k v]]
+     (.replaceAll s k v))
+   s
+   {"::" ":"
+    "`" ""
+    "~" ""
+    "@" ""
+    "#(" "("
+    "#\"" "\""
+    "\\." ""}))
 
 (defn read-src [f]
   (p/let [s (slurp f)
