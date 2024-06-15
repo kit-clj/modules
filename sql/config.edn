@@ -49,7 +49,7 @@
                  :path   "deps.edn"
                  :target [:deps]
                  :action :merge
-                 :value  {org.xerial/sqlite-jdbc {:mvn/version "3.36.0.3"}}}]}}
+                 :value  {org.xerial/sqlite-jdbc {:mvn/version "3.46.0.0"}}}]}}
 
  :postgres
  {:feature-requires [:base]
