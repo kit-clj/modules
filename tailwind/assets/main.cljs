@@ -10,9 +10,8 @@
 
 (defn tailwind []
   (let [cp
-        (child-process/spawn
-         "npx"
-         #js ["tailwindcss" "-i" "./tailwind/input.css" "-o" "./resources/public/output.css"])]
+        (child-process/exec
+         "npx tailwindcss -i ./tailwind/input.css -o ./resources/public/output.css")]
     (-> cp
         .-stdout
         (.on "data" #(-> % .toString js/console.log)))
