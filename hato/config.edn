@@ -7,6 +7,10 @@
                  :target [:deps]
                  :action :merge
                  :value  {io.github.kit-clj/kit-hato {:mvn/version "1.0.3"}}}
+                {:type   :clj
+                 :path   "src/clj/<<sanitized>>/core.clj"
+                 :action :append-requires
+                 :value  ["[kit.edge.http.hato]"]}
                 {:type   :edn
                  :path   "resources/system.edn"
                  :target []
