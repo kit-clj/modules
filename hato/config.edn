@@ -15,9 +15,9 @@
                  :path   "resources/system.edn"
                  :target []
                  :action :merge
-                 :value  {:http/client {}}}
+                 :value  {:http.client/hato {}}}
                 {:type   :edn
                  :path   "resources/system.edn"
                  :target [:reitit.routes/api]
                  :action :merge
-                 :value  {:http/client #ig/ref :http/client}}]}}}
+                 :value  {:http/client #ig/ref :http.client/hato}}]}}}
