@@ -107,8 +107,11 @@
 (defn read-src [f]
   (p/let [s (slurp f)
           s (skip-macros s)]
-    (edn/read-string
-     (str "[" s "]"))))
+    (try
+      (edn/read-string
+       (str "[" s "]"))
+      (catch js/Error e
+        (println "Warning:" e "in" f)))))
 
 (defn get-hiccup* [m]
   (cond

@@ -46,9 +46,12 @@
            (let [files (filter src? files)]
              (if (empty? files)
                (js/console.error "No files found")
-               (p/do 
-                (.mkdir fs "target/generated-sources/tailwind"
-                        #js {:recursive true} #(.error js/console %))
-                (p/all (map process/process-file files))
-                (when watch? (watch path))))))))
+               (.mkdir fs "target/generated-sources/tailwind"
+                       #js {:recursive true}
+                       (fn [error-making-files?]
+                         (if error-making-files?
+                           (println "error making files")
+                           (p/do
+                             (p/all (map process/process-file files))
+                             (when watch? (watch path)))))))))))
       (println "please provide path"))))
