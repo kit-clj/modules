@@ -9,7 +9,7 @@
        http-response/ok
        (http-response/content-type "text/html")))
 
-(defmacro ui [opts & content]
+(defmacro pagelet [opts & content]
   `(-> (str (h/html ~opts ~@content))
        http-response/ok
        (http-response/content-type "text/html")))

@@ -19,7 +19,7 @@
     [:button {:hx-post "/clicked" :hx-swap "outerHTML"} "Click me!"]]))
 
 (defn clicked [request]
-  (ui
+  (pagelet
    [:div "Congratulations! You just clicked the button!"]))
 
 ;; Routes
