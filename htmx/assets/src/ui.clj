@@ -9,18 +9,17 @@
    [reitit.ring.middleware.parameters :as parameters]))
 
 (defn home [request]
-  (page
+  (page {:lang "en"}
    [:head
     [:meta {:charset "UTF-8"}]
     [:title "Htmx + Kit"]
-    [:script {:src "https://unpkg.com/htmx.org@1.9.10/dist/htmx.min.js" :defer true}]
-    [:script {:src "https://unpkg.com/hyperscript.org@0.9.12" :defer true}]]
+    [:script {:src "https://unpkg.com/htmx.org@2.0.4/dist/htmx.min.js" :defer true}]]
    [:body
     [:h1 "Welcome to Htmx + Kit module"]
     [:button {:hx-post "/clicked" :hx-swap "outerHTML"} "Click me!"]]))
 
 (defn clicked [request]
-  (ui
+  (pagelet
    [:div "Congratulations! You just clicked the button!"]))
 
 ;; Routes

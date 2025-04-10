@@ -4,12 +4,12 @@
    [hiccup.core :as h]
    [hiccup.page :as p]))
 
-(defn page [opts & content]
-  (-> (p/html5 opts content)
-      http-response/ok
-      (http-response/content-type "text/html")))
+(defmacro page [opts & content]
+  `(-> (p/html5 ~opts ~@content)
+       http-response/ok
+       (http-response/content-type "text/html")))
 
-(defn ui [opts & content]
-  (-> (h/html opts content)
-      http-response/ok
-      (http-response/content-type "text/html")))
+(defmacro pagelet [opts & content]
+  `(-> (str (h/html ~opts ~@content))
+       http-response/ok
+       (http-response/content-type "text/html")))
