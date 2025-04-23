@@ -3,7 +3,7 @@
    [<<ns-name>>.web.middleware.exception :as exception]
    [<<ns-name>>.web.middleware.formats :as formats]
    [<<ns-name>>.web.routes.utils :as utils]
-   [<<ns-name>>.web.htmx :refer [ui page] :as htmx]
+   [<<ns-name>>.web.htmx :refer [page pagelet] :as htmx]
    [integrant.core :as ig]
    [reitit.ring.middleware.muuntaja :as muuntaja]
    [reitit.ring.middleware.parameters :as parameters]))
