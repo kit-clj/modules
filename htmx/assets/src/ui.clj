@@ -13,7 +13,7 @@
    [:head
     [:meta {:charset "UTF-8"}]
     [:title "Htmx + Kit"]
-    [:script {:src "https://unpkg.com/htmx.org@2.0.4/dist/htmx.min.js" :defer true}]]
+    [:script {:src "https://unpkg.com/htmx.org@2.0.8/dist/htmx.min.js" :defer true}]]
    [:body
     [:h1 "Welcome to Htmx + Kit module"]
     [:button {:hx-post "/clicked" :hx-swap "outerHTML"} "Click me!"]]))
