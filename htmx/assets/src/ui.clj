@@ -3,7 +3,7 @@
    [<<ns-name>>.web.middleware.exception :as exception]
    [<<ns-name>>.web.middleware.formats :as formats]
    [<<ns-name>>.web.routes.utils :as utils]
-   [<<ns-name>>.web.htmx :refer [page pagelet] :as htmx]
+   [<<ns-name>>.web.htmx :refer [page fragment] :as htmx]
    [integrant.core :as ig]
    [reitit.ring.middleware.muuntaja :as muuntaja]
    [reitit.ring.middleware.parameters :as parameters]))
@@ -19,7 +19,7 @@
     [:button {:hx-post "/clicked" :hx-swap "outerHTML"} "Click me!"]]))
 
 (defn clicked [request]
-  (pagelet
+  (fragment
    [:div "Congratulations! You just clicked the button!"]))
 
 ;; Routes
