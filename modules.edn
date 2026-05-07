@@ -24,6 +24,9 @@
   :kit/metrics
   {:path "metrics"
    :doc "adds support for metrics using prometheus through iapetos"}
+  :kit/quartz
+  {:path "quartz"
+   :doc "adds support for quartz scheduling"}
   :kit/sente
   {:path "sente"
    :doc "adds support for Sente websockets to cljs"}
