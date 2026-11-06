@@ -15,7 +15,7 @@
                  :path   "resources/html/home.html"
                  :action :append
                  :target [:body]
-                 :value  [:script {:src "/js/app.js"}]}
+                 :value  [:script {:src "{% app-script %}"}]}
                 {:type   :clj
                  :path   "src/clj/<<sanitized>>/core.clj"
                  :action :append-requires
