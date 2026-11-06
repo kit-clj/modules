@@ -4,7 +4,8 @@
  :base
  {:require-restart? true
   :actions
-  {:assets     [["assets/shadow-cljs.edn" "shadow-cljs.edn"]]
+  {:assets     [["assets/shadow-cljs.edn" "shadow-cljs.edn"]
+                ["assets/src/app_script.clj" "src/clj/<<sanitized>>/web/pages/app_script.clj"]]
    :injections [{:type   :html
                  :path   "resources/html/home.html"
                  :action :append
@@ -14,7 +15,11 @@
                  :path   "resources/html/home.html"
                  :action :append
                  :target [:body]
-                 :value  [:script {:src "/js/app.js"}]}
+                 :value  [:script {:src "{% app-script %}"}]}
+                {:type   :clj
+                 :path   "src/clj/<<sanitized>>/core.clj"
+                 :action :append-requires
+                 :value  ["[<<ns-name>>.web.pages.app-script]"]}
                 {:type :edn
                  :path "deps.edn"
                  :target [:paths]
